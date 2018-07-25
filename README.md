@@ -10,6 +10,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 You need [Docker][1] and _docker-compose_ to run application in development mode
 
+Then, u need to run
+
+```
+$ sh dailyadvisor-init.sh
+```
+
+to get all needed repos.
+
+After pulling all needed repos, create `.env.development` file in *DailyAdvisor-API* folder, and insert special credential for your development. (ready to use `.env.development` file is available on dropbox)
+
 ### Development
 
 First enter repo root folder and run
