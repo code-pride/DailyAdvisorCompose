@@ -9,12 +9,20 @@ cd $DIR/../
 PROJECT_NAME=`basename $(pwd)`
 cd $DIR
 
-if [ -e $DIR/DailyAdvisor-client ] ;then
-    echo "DailyAdvisor-client project already exists"
+if [ -e $DIR/DailyAdvisor-PWA ] ;then
+    echo "DailyAdvisor-PWA project already exists"
     echo "Skipping"
 else
-    git clone git@github.com:codeProud/DailyAdvisor.git $DIR/DailyAdvisor-client
-    echo "Project DailyAdvisor-client has been cloned"
+    git clone git@github.com:codeProud/DailyAdvisor-PWA.git $DIR/DailyAdvisor-PWA
+    echo "Project DailyAdvisor-PWA has been cloned"
+fi
+
+if [ -e $DIR/DailyAdvisor-API ] ;then
+    echo "DailyAdvisor-API project already exists"
+    echo "Skipping"
+else
+    git clone git@github.com:codeProud/DailyAdvisor-API.git $DIR/DailyAdvisor-API
+    echo "Project DailyAdvisor-API has been cloned"
 fi
 
 if [ -e $DIR/UserService-micro ] ;then
