@@ -1,4 +1,5 @@
 ZuulGateway
 UserService-micro
 EurekaDiscovery
-DailyAdvisor-client
+DailyAdvisor-PWA
+DailyAdvisor-API
