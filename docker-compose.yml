@@ -11,24 +11,24 @@ services:
             - POSTGRES_DB=daily_advisor
         container_name: POSTGRES
 
-    backend:
-        container_name: API
+    dailyadvisor-api:
+        container_name: DailyAdvisor-API
         volumes:
-            - ./backend:/backend
+            - ./DailyAdvisor-API:/DailyAdvisor-API
         build: 
             context: .
-            dockerfile: ./backend/dev.Dockerfile
+            dockerfile: ./DailyAdvisor-API/dev.Dockerfile
         ports:
             - "8091:8091"
         depends_on:
             - db
 
-    frontend:
-        container_name: CLIENT
+    dailyadvisor-pwa:
+        container_name: DailyAdvisor-PWA
         volumes:
-            - ./frontend:/frontend
+            - ./DailyAdvisor-PWA:/DailyAdvisor-PWA
         build: 
             context: .
-            dockerfile: ./frontend/dev.Dockerfile
+            dockerfile: ./DailyAdvisor-PWA/dev.Dockerfile
         ports:
             - "3000:3000"
