@@ -13,7 +13,7 @@ if [ -e $DIR/DailyAdvisor-PWA ] ;then
     echo "DailyAdvisor-PWA project already exists"
     echo "Skipping"
 else
-    git clone git@github.com:codeProud/DailyAdvisor-PWA.git $DIR/DailyAdvisor-PWA
+    git clone git@github.com:code-pride/DailyAdvisor-PWA.git $DIR/DailyAdvisor-PWA
     echo "Project DailyAdvisor-PWA has been cloned"
 fi
 
@@ -21,7 +21,7 @@ if [ -e $DIR/DailyAdvisor-API ] ;then
     echo "DailyAdvisor-API project already exists"
     echo "Skipping"
 else
-    git clone git@github.com:codeProud/DailyAdvisor-API.git $DIR/DailyAdvisor-API
+    git clone git@github.com:code-pride/DailyAdvisor-API.git $DIR/DailyAdvisor-API
     echo "Project DailyAdvisor-API has been cloned"
 fi
 
@@ -29,7 +29,7 @@ if [ -e $DIR/UserService-micro ] ;then
     echo "UserService-micro project already exists"
     echo "Skipping"
 else
-    git clone git@github.com:codeProud/UserService.git $DIR/UserService-micro
+    git clone git@github.com:code-pride/UserService.git $DIR/UserService-micro
     echo "Project UserService-micro has been cloned"
 fi
 
@@ -37,7 +37,7 @@ if [ -e $DIR/EurekaDiscovery ] ;then
     echo "EurekaDiscovery project already exists"
     echo "Skipping"
 else
-    git clone git@github.com:codeProud/EurekaDiscovery.git $DIR/EurekaDiscovery
+    git clone git@github.com:code-pride/EurekaDiscovery.git $DIR/EurekaDiscovery
     echo "Project EurekaDiscovery has been cloned"
 fi
 
@@ -45,6 +45,6 @@ if [ -e $DIR/ZuulGateway ] ;then
     echo "ZuulGateway project already exists"
     echo "Skipping"
 else
-    git clone git@github.com:codeProud/ZuulGateway.git $DIR/ZuulGateway
+    git clone git@github.com:code-pride/ZuulGateway.git $DIR/ZuulGateway
     echo "Project ZuulGateway has been cloned"
 fi
