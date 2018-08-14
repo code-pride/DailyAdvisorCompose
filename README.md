@@ -24,7 +24,7 @@ $ sh dailyadvisor-init.sh
 
 to get all needed repos.
 
-After pulling all needed repos, create `.env.development` file in *DailyAdvisor-API* folder, and insert special credential for your development. (ready to use `.env.development` file is available on dropbox)
+After pulling all needed repos, create `.env.development` file in _DailyAdvisor-API_ folder, and insert special credential for your development. (ready to use `.env.development` file is available on dropbox)
 
 Make sure, that downloaded file have 'dot' as first char in file name. If not, add one.
 
@@ -55,6 +55,30 @@ The application now is ready on:
 ```
 http://localhost:3000
 ```
+
+## Running next time
+
+When you end your work and come back later, u have to change one thing to be sure that data in database will stay and not be **rewritten**:
+
+go to `src/main/resources/application.properties` in `DailyAdvisor-API` project. And change this line:
+
+```
+spring.jpa.hibernate.ddl-auto = create
+```
+
+to this line:
+
+```
+spring.jpa.hibernate.ddl-auto = update
+```
+
+now, you can run project without building it, so only command:
+
+```
+docker-compsoe up
+```
+
+and you are ready to go!
 
 ## Running the tests
 
