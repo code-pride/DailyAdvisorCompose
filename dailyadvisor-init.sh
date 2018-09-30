@@ -13,38 +13,46 @@ if [ -e $DIR/DailyAdvisor-PWA ] ;then
     echo "DailyAdvisor-PWA project already exists"
     echo "Skipping"
 else
-    git clone git@github.com:code-pride/DailyAdvisor-PWA.git $DIR/DailyAdvisor-PWA
+    git clone https://github.com/code-pride/DailyAdvisor-PWA.git $DIR/DailyAdvisor-PWA
     echo "Project DailyAdvisor-PWA has been cloned"
 fi
 
-if [ -e $DIR/DailyAdvisor-API ] ;then
-    echo "DailyAdvisor-API project already exists"
+if [ -e $DIR/api-service ] ;then
+    echo "api-service project already exists"
     echo "Skipping"
 else
-    git clone git@github.com:code-pride/DailyAdvisor-API.git $DIR/DailyAdvisor-API
-    echo "Project DailyAdvisor-API has been cloned"
+    git clone -b task/no-login https://github.com/code-pride/DailyAdvisor-API.git $DIR/api-service
+    echo "Project api-service has been cloned"
 fi
 
-if [ -e $DIR/UserService-micro ] ;then
-    echo "UserService-micro project already exists"
+if [ -e $DIR/user-service ] ;then
+    echo "user-service project already exists"
     echo "Skipping"
 else
-    git clone git@github.com:code-pride/UserService.git $DIR/UserService-micro
-    echo "Project UserService-micro has been cloned"
+    git clone -b task/docker https://github.com/code-pride/UserService.git $DIR/user-service
+    echo "Project user-service has been cloned"
 fi
 
-if [ -e $DIR/EurekaDiscovery ] ;then
-    echo "EurekaDiscovery project already exists"
+if [ -e $DIR/eureka ] ;then
+    echo "Eureka project already exists"
     echo "Skipping"
 else
-    git clone git@github.com:code-pride/EurekaDiscovery.git $DIR/EurekaDiscovery
-    echo "Project EurekaDiscovery has been cloned"
+    git clone -b develop https://github.com/code-pride/EurekaDiscovery.git $DIR/eureka
+    echo "Project eureka has been cloned"
 fi
 
-if [ -e $DIR/ZuulGateway ] ;then
-    echo "ZuulGateway project already exists"
+if [ -e $DIR/gateway ] ;then
+    echo "Gateway project already exists"
     echo "Skipping"
 else
-    git clone git@github.com:code-pride/ZuulGateway.git $DIR/ZuulGateway
-    echo "Project ZuulGateway has been cloned"
+    git clone -b spring-gateway https://github.com/code-pride/Gateway.git $DIR/gateway
+    echo "Project gateway has been cloned"
+fi
+
+if [ -e $DIR/Tests ] ;then
+    echo "Tests project already exists"
+    echo "Skipping"
+else
+    git clone -b develop https://github.com/code-pride/IntegrationTests.git $DIR/tests
+    echo "Project tests has been cloned"
 fi
