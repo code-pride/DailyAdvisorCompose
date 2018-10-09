@@ -24,7 +24,7 @@ $ sh dailyadvisor-init.sh
 
 to get all needed repos.
 
-After pulling all needed repos, create `secret.env` file in main folder, and insert special credential for your development. (ready to use `secret.env` file is available on dropbox)
+After pulling all needed repos, create `secret.env` file in main folder, and insert special credential for your development. (ready to use `secret.env` file is available on onedrive)
 
 ### Development
 
