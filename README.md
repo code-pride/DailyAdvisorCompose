@@ -24,13 +24,11 @@ $ sh dailyadvisor-init.sh
 
 to get all needed repos.
 
-After pulling all needed repos, create `.env.development` file in *DailyAdvisor-API* folder, and insert special credential for your development. (ready to use `.env.development` file is available on dropbox)
-
-Make sure, that downloaded file have 'dot' as first char in file name. If not, add one.
+After pulling all needed repos, create `secret.env` file in main folder, and insert special credential for your development. (ready to use `secret.env` file is available on onedrive)
 
 ### Development
 
-First enter repo root folder and run
+Go to docker-compose folder and run
 
 ```
 $ docker-compose build
@@ -42,12 +40,10 @@ then run
 $ docker-compose up
 ```
 
-Be sure that you have port `8091`, `3000`, `5432` available on your host machine.
-
 Then to populate database with initial data you need to make HTTP GET request on:
 
 ```
-http://localhost:8091/populate
+http://localhost:8080/api/populate
 ```
 
 The application now is ready on:

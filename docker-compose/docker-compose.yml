@@ -1,0 +1,99 @@
+version: '3'
+services:
+    postgres:
+        image: postgres
+        restart: always
+        ports:
+            - "5432:5432"
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=daily_advisor
+        container_name: POSTGRES
+
+    cassandra:
+        image: cassandra:latest
+        restart: always
+        ports:
+            - "${CASSANDRA_PORT}:${CASSANDRA_PORT}"
+        environment:
+            - "MAX_HEAP_SIZE=256M"
+            - "HEAP_NEWSIZE=128M"
+        container_name: CASSANDRA
+        volumes:
+            - ./compose-scripts:/compose-scripts
+            - ./../tests/populate/cassandra:/populate
+            - ./../user-service/user-service.cql:/user-service.cql
+        entrypoint: "sh /compose-scripts/cassandra-entrypoint.sh"
+
+    redis:
+        image: redis
+        container_name: REDIS
+        ports:
+            - "6379:6379"
+
+    eureka:
+        container_name: eureka
+        build:
+            context: ./../eureka
+        ports:
+            - "8761:8761"
+        hostname: eureka
+
+    api-service:
+        container_name: api-service
+        build:
+            context: ./../api-service
+        env_file:
+            - ./.env
+            - ./../secret.env
+        ports:
+            - "8091:8091"
+        depends_on:
+            - postgres
+            - eureka
+        volumes:
+            - ./compose-scripts:/compose-scripts
+        entrypoint: sh /compose-scripts/app-entrypoint.sh ${EUREKA_URL} ${POSTGRES_HOST}:${POSTGRES_PORT}
+    
+    user-service:
+        container_name: user-service
+        build:
+            context: ./../user-service
+        env_file:
+            - ./.env
+            - ./../secret.env
+        ports:
+            - "8092:8092"
+        depends_on:
+            - eureka
+            - cassandra
+            - redis
+        volumes:
+            - ./compose-scripts:/compose-scripts
+        entrypoint: sh /compose-scripts/app-entrypoint.sh ${CASSANDRA_HOST}:${CASSANDRA_PORT} ${EUREKA_URL} ${REDIS_HOST}:${REDIS_PORT}
+
+    gateway:
+        container_name: gateway
+        build:
+            context: ./../gateway
+        env_file:
+            - ./.env
+        ports:
+            - "8080:8080"
+        depends_on:
+            - eureka
+            - redis
+        volumes:
+            - ./compose-scripts:/compose-scripts
+        entrypoint: sh /compose-scripts/app-entrypoint.sh ${EUREKA_URL} ${REDIS_HOST}:${REDIS_PORT}
+
+    dailyadvisor-pwa:
+        container_name: DailyAdvisor-PWA
+        volumes:
+            - ./../DailyAdvisor-PWA:/DailyAdvisor-PWA
+        build: 
+            context: ./..
+            dockerfile: ./DailyAdvisor-PWA/dev.Dockerfile
+        ports:
+            - "3000:3000"

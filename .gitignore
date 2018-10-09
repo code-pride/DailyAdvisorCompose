@@ -1,6 +1,9 @@
 .DS_Store
-ZuulGateway
-UserService-micro
-EurekaDiscovery
+gateway
+user-service
+eureka
 DailyAdvisor-PWA
-DailyAdvisor-API
+api-service
+tests
+
+secret.env
