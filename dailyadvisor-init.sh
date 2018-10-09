@@ -14,7 +14,7 @@ if [ -e $DIR/DailyAdvisor-PWA ] ;then
     echo "Updating"
     git -C $DIR/DailyAdvisor-PWA pull
 else
-    git clone https://github.com/code-pride/DailyAdvisor-PWA.git $DIR/DailyAdvisor-PWA
+    git clone -b develop https://github.com/code-pride/DailyAdvisor-PWA.git $DIR/DailyAdvisor-PWA
     echo "Project DailyAdvisor-PWA has been cloned"
 fi
 
@@ -23,7 +23,7 @@ if [ -e $DIR/api-service ] ;then
     echo "Updating"
     git -C $DIR/api-service pull
 else
-    git clone -b task/no-login https://github.com/code-pride/DailyAdvisor-API.git $DIR/api-service
+    git clone -b develop https://github.com/code-pride/DailyAdvisor-API.git $DIR/api-service
     echo "Project api-service has been cloned"
 fi
 
@@ -32,7 +32,7 @@ if [ -e $DIR/user-service ] ;then
     echo "Updating"
     git -C $DIR/user-service pull
 else
-    git clone -b task/docker https://github.com/code-pride/UserService.git $DIR/user-service
+    git clone -b develop https://github.com/code-pride/UserService.git $DIR/user-service
     echo "Project user-service has been cloned"
 fi
 
@@ -50,7 +50,7 @@ if [ -e $DIR/gateway ] ;then
     echo "Updating"
     git -C $DIR/gateway pull
 else
-    git clone -b spring-gateway https://github.com/code-pride/Gateway.git $DIR/gateway
+    git clone -b develop https://github.com/code-pride/Gateway.git $DIR/gateway
     echo "Project gateway has been cloned"
 fi
 
