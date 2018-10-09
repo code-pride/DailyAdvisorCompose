@@ -48,11 +48,10 @@ fi
 if [ -e $DIR/gateway ] ;then
     echo "Gateway project already exists"
     echo "Updating"
-    git -C $DIR/DailyAdvisor-PWA pull
+    git -C $DIR/gateway pull
 else
     git clone -b spring-gateway https://github.com/code-pride/Gateway.git $DIR/gateway
     echo "Project gateway has been cloned"
-    git -C $DIR/gateway pull
 fi
 
 if [ -e $DIR/tests ] ;then
