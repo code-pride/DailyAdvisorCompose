@@ -4,6 +4,7 @@ realpath() {
     [[ $1 = /* ]] && echo "$1" || dirname "$PWD/${1#./}"
 }
 DIR=`realpath $0`
+BRANCH="develop"
 
 cd $DIR/../
 PROJECT_NAME=`basename $(pwd)`
@@ -14,7 +15,7 @@ if [ -e $DIR/DailyAdvisor-PWA ] ;then
     echo "Updating"
     git -C $DIR/DailyAdvisor-PWA pull
 else
-    git clone -b develop https://github.com/code-pride/DailyAdvisor-PWA.git $DIR/DailyAdvisor-PWA
+    git clone -b $BRANCH https://github.com/code-pride/DailyAdvisor-PWA.git $DIR/DailyAdvisor-PWA
     echo "Project DailyAdvisor-PWA has been cloned"
 fi
 
@@ -23,7 +24,7 @@ if [ -e $DIR/api-service ] ;then
     echo "Updating"
     git -C $DIR/api-service pull
 else
-    git clone -b develop https://github.com/code-pride/DailyAdvisor-API.git $DIR/api-service
+    git clone -b $BRANCH https://github.com/code-pride/DailyAdvisor-API.git $DIR/api-service
     echo "Project api-service has been cloned"
 fi
 
@@ -32,7 +33,7 @@ if [ -e $DIR/user-service ] ;then
     echo "Updating"
     git -C $DIR/user-service pull
 else
-    git clone -b develop https://github.com/code-pride/UserService.git $DIR/user-service
+    git clone -b $BRANCH https://github.com/code-pride/UserService.git $DIR/user-service
     echo "Project user-service has been cloned"
 fi
 
@@ -41,7 +42,7 @@ if [ -e $DIR/eureka ] ;then
     echo "Updating"
     git -C $DIR/eureka pull
 else
-    git clone -b develop https://github.com/code-pride/EurekaDiscovery.git $DIR/eureka
+    git clone -b $BRANCH https://github.com/code-pride/EurekaDiscovery.git $DIR/eureka
     echo "Project eureka has been cloned"
 fi
 
@@ -50,7 +51,7 @@ if [ -e $DIR/gateway ] ;then
     echo "Updating"
     git -C $DIR/gateway pull
 else
-    git clone -b develop https://github.com/code-pride/Gateway.git $DIR/gateway
+    git clone -b $BRANCH https://github.com/code-pride/Gateway.git $DIR/gateway
     echo "Project gateway has been cloned"
 fi
 
@@ -59,6 +60,6 @@ if [ -e $DIR/tests ] ;then
     echo "Updating"
     git -C $DIR/tests pull
 else
-    git clone -b develop https://github.com/code-pride/IntegrationTests.git $DIR/tests
+    git clone -b $BRANCH https://github.com/code-pride/IntegrationTests.git $DIR/tests
     echo "Project tests has been cloned"
 fi
